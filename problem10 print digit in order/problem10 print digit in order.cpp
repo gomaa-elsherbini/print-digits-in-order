@@ -3,59 +3,103 @@
 using namespace std;
 
 
-int readNumber(string msg)
+int readPositiveNumber(string msg)
 {
 	int num;
-	cout << msg << endl;
-	cin >> num;
+	do
+	{
+		cout << msg << endl;
+		cin >> num;
+	} while (num<=0);
 	return num;
 }
 
-int getLength(string str)
+int reverseNumberDigits(int num)
 {
-	int length = 0;
-	int counter = 0;
-
-	while (str[counter])
+	int num2 = 0;
+	while (num > 0)
 	{
-		length++;
-		counter++;
+		int reminder = num % 10;
+		num = num / 10;
+
+		num2 = num2 * 10 + reminder;
 	}
-	return length;
+	return num2;
 }
 
-int getDigitFreq(int num, char digit)
+void printNumberDigitsInOrder(int num)
 {
-	int freq = 0;
+	int reversedNumber = reverseNumberDigits(num);
 
-	string str = to_string(num);
-
-	int length = getLength(str);
-	for (int i = 0; i < length; i++)
+	//int orderedNumber = 0;
+	
+	/*while (reversedNumber > 0)
 	{
-		if (str[i] == digit)
-		{
-			freq++;
-		}
-	}
-	return freq;
-}
+		int reminder = reversedNumber % 10;
+		reversedNumber = reversedNumber / 10;
 
-void printAllDigits(int num)
-{
-	string str = to_string(num);
-	int length = getLength(str);
+		orderedNumber = orderedNumber * 10 + reminder;
+	}*/
 
-	for (int i = 0; i < length; i++)
-	{
-
-		cout << str[i] << endl;
-	}
+	cout << reverseNumberDigits(reversedNumber) << endl;
 }
 
 int main()
 {
-	printAllDigits(readNumber("enter Number?"));
+	printNumberDigitsInOrder(readPositiveNumber("enter Number?"));
 
 	return 0;
 }
+
+
+
+
+//int readNumber(string msg)
+//{
+//	int num;
+//	cout << msg << endl;
+//	cin >> num;
+//	return num;
+//}
+//
+//int getLength(string str)
+//{
+//	int length = 0;
+//	int counter = 0;
+//
+//	while (str[counter])
+//	{
+//		length++;
+//		counter++;
+//	}
+//	return length;
+//}
+//
+//int getDigitFreq(int num, char digit)
+//{
+//	int freq = 0;
+//
+//	string str = to_string(num);
+//
+//	int length = getLength(str);
+//	for (int i = 0; i < length; i++)
+//	{
+//		if (str[i] == digit)
+//		{
+//			freq++;
+//		}
+//	}
+//	return freq;
+//}
+//
+//void printAllDigits(int num)
+//{
+//	string str = to_string(num);
+//	int length = getLength(str);
+//
+//	for (int i = 0; i < length; i++)
+//	{
+//
+//		cout << str[i] << endl;
+//	}
+//}
